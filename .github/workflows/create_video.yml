@@ -1,0 +1,38 @@
+name: Create Gource Video
+on:
+  workflow_dispatch:
+    inputs:
+      gource_resolution:
+        description: "Used gource resolution (2160p, 1440p, 1080p, 720p)."
+        required: true
+        default: "1080p"
+
+jobs:
+  create_video:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repo
+        uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+      - name: Copy avatars
+        run: python copy-avatars.py
+
+      - name: "Gource Action"
+        uses: nbprojekt/gource-action@v1
+        with:
+          git_url: ./
+          gource_title: "gource-videos"
+          logo_url: ""
+          avatars_url: "./avatars"
+          gource_resolution: ${{ github.event.inputs.gource_resolution }}
+          gource_fps: 60
+          gource_font_size: 40
+          # just for testing
+          gource_seconds_per_day: 30
+
+      - uses: actions/upload-artifact@v2
+        with:
+          name: gource
+          path: ./gource/gource.mp4
