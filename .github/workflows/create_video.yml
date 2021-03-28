@@ -43,15 +43,13 @@ jobs:
       - name: "Gource Action"
         uses: nbprojekt/gource-action@v1
         with:
-          git_url: ./
-          gource_title: "gource-videos"
-          logo_url: ""
+          git_url: https://github.com/glotaran/pyglotaran
+          gource_title: pyglotaran
+          logo_url: "https://raw.githubusercontent.com/glotaran/pyglotaran/main/docs/source/images/glotaran.png?raw=true"
           avatars_url: "./avatars"
           gource_resolution: ${{ github.event.inputs.gource_resolution }}
           gource_fps: 60
           gource_font_size: 40
-          # just for testing
-          gource_seconds_per_day: 30
 
       - name: Rename Video
         env:
