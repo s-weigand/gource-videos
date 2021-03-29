@@ -43,15 +43,14 @@ jobs:
       - name: "Gource Action"
         uses: nbprojekt/gource-action@v1
         with:
-          git_url: ./
-          gource_title: "gource-videos"
-          logo_url: ""
+          git_url: https://github.com/nbQA-dev/nbQA
+          gource_title: "nbQa"
+          logo_url: "https://raw.githubusercontent.com/nbQA-dev/nbQA-demo/master/assets/logo.png?raw=true"
           avatars_url: "./avatars"
           gource_resolution: ${{ github.event.inputs.gource_resolution }}
           gource_fps: 60
           gource_font_size: 40
-          # just for testing
-          gource_seconds_per_day: 30
+          gource_seconds_per_day: 0.3
 
       - name: Rename Video
         env:
