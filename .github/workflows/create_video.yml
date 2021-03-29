@@ -16,6 +16,17 @@ jobs:
         uses: actions/checkout@v2
       - name: Set up Python
         uses: actions/setup-python@v2
+      - name: Extract branch name
+        id: get_branch_name
+        shell: python
+        run: |
+          import os
+
+          branch_name = os.environ["GITHUB_REF"].split("/")[-1]
+
+          print(f"Settings brach name to: {branch_name}")
+          print(f"::set-output name=branch_name::{branch_name}")
+
       - name: Copy avatars
         run: python prepare-build.py
 
@@ -32,7 +43,14 @@ jobs:
           # just for testing
           gource_seconds_per_day: 30
 
+      - name: Rename Video
+        env:
+          branch_name: ${{ steps.get_branch_name.outputs.branch_name }}
+        run: mv gource/gource.mp4 "gource/gource_${{ env.branch_name }}.mp4"
+
       - uses: actions/upload-artifact@v2
+        env:
+          branch_name: ${{ steps.get_branch_name.outputs.branch_name }}
         with:
-          name: gource
-          path: ./gource/gource.mp4
+          name: gource_${{ env.branch_name }}
+          path: ./gource/gource_${{ env.branch_name }}.mp4
