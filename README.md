@@ -2,6 +2,12 @@
 
 This is my Repo to create [gource](https://github.com/acaudwell/Gource) videos for some selected projects via github actions with `workflow_dispatch`.
 
+<div align="center">
+
+[![gource demo video](https://img.youtube.com/vi/NjUuAuBcoqs/0.jpg)](https://www.youtube.com/watch?v=NjUuAuBcoqs "gource demo video")
+
+</div>
+
 ## How does it work?
 
 The main branch contains a basic workflow to create a video with [gource](https://github.com/acaudwell/Gource), which is mainly for testing and having a base to extend from.
