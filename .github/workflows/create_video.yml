@@ -17,7 +17,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v2
       - name: Copy avatars
-        run: python copy-avatars.py
+        run: python prepare-build.py
 
       - name: "Gource Action"
         uses: nbprojekt/gource-action@v1
