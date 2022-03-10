@@ -45,7 +45,7 @@ jobs:
         with:
           git_url: https://github.com/glotaran/pyglotaran
           gource_title: pyglotaran
-          logo_url: "https://raw.githubusercontent.com/glotaran/pyglotaran/main/docs/source/images/glotaran.png?raw=true"
+          logo_url: "https://raw.githubusercontent.com/glotaran/pyglotaran/main/docs/source/images/glotaran.png"
           avatars_url: "./avatars"
           gource_resolution: ${{ github.event.inputs.gource_resolution }}
           gource_fps: 60
