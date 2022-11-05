@@ -13,9 +13,11 @@ jobs:
 
     steps:
       - name: Check out repo
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Set up Python
-        uses: actions/setup-python@v2
+        uses: actions/setup-python@v4
+        with:
+          python-version: "3.10"
       - name: Extract branch name
         id: get_branch_name
         shell: python
@@ -25,7 +27,9 @@ jobs:
           branch_name = os.environ["GITHUB_REF"].split("/")[-1]
 
           print(f"Settings brach name to: {branch_name}")
-          print(f"::set-output name=branch_name::{branch_name}")
+
+          with open(os.getenv("GITHUB_OUTPUT"), "a", encoding="utf8") as f:
+              f.writelines([f"branch_name={branch_name}"])
 
       - name: Copy avatars
         run: python prepare-build.py
