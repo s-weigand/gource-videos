@@ -3,9 +3,15 @@ on:
   workflow_dispatch:
     inputs:
       gource_resolution:
-        description: "Used gource resolution (2160p, 1440p, 1080p, 720p)."
+        description: "Used gource resolution."
+        type: choice
         required: true
-        default: "1080p"
+        default: 1080p
+        options:
+          - 2160p
+          - 1440p
+          - 1080p
+          - 720p
 
 jobs:
   create_video:
@@ -26,7 +32,7 @@ jobs:
 
           branch_name = os.environ["GITHUB_REF"].split("/")[-1]
 
-          print(f"Settings brach name to: {branch_name}")
+          print(f"Setting brach name to: {branch_name}")
 
           with open(os.getenv("GITHUB_OUTPUT"), "a", encoding="utf8") as f:
               f.writelines([f"branch_name={branch_name}"])
