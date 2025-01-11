@@ -43,8 +43,8 @@ jobs:
       - name: "Gource Action"
         uses: nbprojekt/gource-action@v1
         with:
-          git_url: https://github.com/glotaran/pyglotaran
-          gource_title: pyglotaran
+          git_url: https://github.com/glotaran/pyglotaran-extras
+          gource_title: pyglotaran-extras
           logo_url: "https://raw.githubusercontent.com/glotaran/pyglotaran/main/docs/source/images/glotaran.png"
           avatars_url: "./avatars"
           gource_resolution: ${{ github.event.inputs.gource_resolution }}
